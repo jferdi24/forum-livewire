@@ -30,7 +30,9 @@ class ShowThreads extends Component
             $threads = $threads->where('category_id', $this->category);
         }
 
-        $threads = $threads->withCount('replies')
+        $threads = $threads
+            ->with('user', 'category')
+            ->withCount('replies')
             ->latest()
             ->paginate(5);
 

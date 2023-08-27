@@ -7,9 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $category_id
+ * @property string $title
+ * @property string $body
+ */
 class Thread extends Model
 {
     use HasFactory;
+
+    /** @var string[] */
+    protected $fillable = [
+        'category_id',
+        'title',
+        'body',
+    ];
 
     public function replies(): HasMany
     {
